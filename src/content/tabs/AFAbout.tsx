@@ -39,8 +39,8 @@ export const AFAbout = ({ props }: Prop) => {
         </div>
       </div>
       <div
-        id="about-alternative-background"
-        className="bx--grid bx--grid--no-gutter bx--grid--full-width"
+        // id="about-alternative-background"
+        className="bx--grid bx--grid--no-gutter bx--grid--full-width about-alternative-background"
       >
         <div
           style={{ margin: 10 }}

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { ObjectSelected, NewTabInfo } from '../customInterfaces/InterfacesHeader';
-import { Services } from '../axiosServices/axiosComponent/Services';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { newTabName, objectClicked, toggle, toggleLeft, selectedTabSmallDev } from '../store/switcher-slice';
 
@@ -30,16 +29,6 @@ export const useHeader = () => {
 
     const tabSelectedNumber = useAppSelector((state) => state.ui.selectedTabSideNavMenu)
 
-    // this getting the controller with / ***************************
-    useEffect(() => {
-        Services.get("/switcher").then((response) => {
-            console.log(response.data);
-            setObject(response.data);
-        });
-    }, []);
-
-    // use effect temporally getting info from the modal (Just the name)
-    
 
     const toggleSwitcher = () => {
         dispatch(toggle());
