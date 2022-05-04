@@ -55,9 +55,11 @@ const HeaderComp = () => {
               Consultants
             </HeaderName>
 
-            <HeaderGlobalBar style={{ marginBottom: 5, marginRight: 20 }}>
-              <HeaderMenuItem href="tel:14505982338">
-                {isSwitchedToFrench ? "Téléphone" : "Phone"}: +1 450 598 23 38
+            <HeaderGlobalBar id="contact-info-header">
+              <HeaderMenuItem  href="tel:14505982338">
+                <span >
+                  {isSwitchedToFrench ? "Téléphone" : "Phone"}: +1 450 598 23 38
+                </span>
               </HeaderMenuItem>
 
               <HeaderMenuItem onClick={onChangeLanguage} href="#">

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-export const contentList = [
-  {a:<>Texto</>},{b:<>Texto</>}
-]
+
 export const useContentText = () => {
   const [content, setcontent] = useState({
     ABOUT_ONE_EN: (
