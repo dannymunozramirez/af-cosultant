@@ -1,23 +1,25 @@
-import { Application32, Globe32, LogoFacebook32, PersonFavorite32, TextLink32 } from "@carbon/icons-react";
+import { Application32, Globe32, LogoFacebook32, LogoLinkedin32, LogoTwitter32, PersonFavorite32, TextLink32 } from "@carbon/icons-react";
 import React from "react";
 import { InfoCard, InfoSection } from "../infoComponent";
+import {IAFFooter} from '../../interfaces/ICompoents'
 
-export const AFFooter = () => {
+
+export const AFFooter = ({isFrenchToggled}:IAFFooter) => {
   return (
     <>
       <InfoSection  heading="" className="landing-page__r3">
         <InfoCard
-          heading="Address"
-          body="Address: # 164 de la Gondole, St-Eustache, QC. J7P 1N5"
+          heading={isFrenchToggled? "Adresse":"Address" }
+          body={`${isFrenchToggled? "Adresse":"Address"}: # 164 de la Gondole, St-Eustache, QC. J7P 1N5"`}
           icon={<Globe32 />}
         />
         <InfoCard
-          heading="Social Media"
-          body="Contact"
-          icon={<LogoFacebook32 />}
+          heading={isFrenchToggled? "Des médias sociaux":"Social Media" }
+          body={isFrenchToggled? "Vous pouvez nous trouver à":"You can find us at" }
+          icon={<div><LogoFacebook32 /> <LogoLinkedin32/> <LogoTwitter32/></div>}
         />
         <InfoCard
-          heading="Institution Links"
+          heading={isFrenchToggled? "Liens institutionnels":"Institution Links" }
           body={
             <ul>
             <li>

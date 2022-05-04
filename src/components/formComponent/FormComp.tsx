@@ -1,8 +1,9 @@
 import { Button, Form, TextArea, TextInput } from "carbon-components-react";
-import React, { FormEvent, useRef, useState } from "react";
 import emailjs from "emailjs-com";
-
-export const FormComp = () => {
+interface Props {
+  isFrenchToggled: boolean;
+}
+export const FormComp = ({ isFrenchToggled }: Props) => {
   const onSubmit = (e: any) => {
     e.preventDefault();
 
@@ -25,32 +26,52 @@ export const FormComp = () => {
       <div style={{ marginBottom: "2rem" }}>
         <TextInput
           name="first_name"
-          helperText="Please type your name"
+          helperText={
+            isFrenchToggled
+              ? "Veuillez taper votre nom"
+              : "Please type your name"
+          }
           id="test2"
-          invalidText="No name entered"
-          labelText="Name"
-          placeholder="Your name"
+          invalidText={isFrenchToggled ? "Aucun nom saisi" : "No name entered"}
+          labelText={isFrenchToggled ? "Votre nom" : "Name"}
+          placeholder={isFrenchToggled ? "Votre nom" : "Your name"}
         />
       </div>
       <div style={{ marginBottom: "2rem" }}>
         <TextInput
           name="last_name"
-          helperText="Please type your last name"
+          helperText={
+            isFrenchToggled
+              ? "Veuillez entrer votre nom de famille"
+              : "Please type your last name"
+          }
           id="test2"
-          invalidText="No name entered"
-          labelText="Last Name"
-          placeholder="Last Name"
+          invalidText={isFrenchToggled ? "Aucun nom saisi" : "No name entered"}
+          labelText={isFrenchToggled ? "Nom de famille" : "Last Name"}
+          placeholder={isFrenchToggled ? "Nom de famille" : "Last Name"}
         />
       </div>
       <div style={{ marginBottom: "2rem" }}>
         <TextArea
           name="message"
           cols={50}
-          helperText="(~100 character count maximum)"
+          helperText={
+            isFrenchToggled
+              ? "(~100 caractères maximum)"
+              : "(~100 character count maximum)"
+          }
           id="test5"
-          invalidText="Invalid error message."
+          invalidText={
+            isFrenchToggled
+              ? "Message d'erreur invalide."
+              : "Invalid error message."
+          }
           labelText="Message"
-          placeholder="Please, leave your message"
+          placeholder={
+            isFrenchToggled
+              ? "S'il vous plaît, laissez votre message"
+              : "Please, leave your message"
+          }
           rows={4}
         />
       </div>
@@ -61,7 +82,7 @@ export const FormComp = () => {
         tabIndex={0}
         type="submit"
       >
-        Submit
+        {isFrenchToggled ? "Submit" : "Envoyer"}
       </Button>
       <br />
     </Form>

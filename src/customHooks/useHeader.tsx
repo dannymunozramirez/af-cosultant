@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ObjectSelected, NewTabInfo } from '../customInterfaces/InterfacesHeader';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { newTabName, objectClicked, toggle, toggleLeft, selectedTabSmallDev } from '../store/switcher-slice';
+import { newTabName, toggle, toggleLeft, selectedTabSmallDev } from '../store/switcher-slice';
 
 
 export const useHeader = () => {
@@ -11,7 +11,6 @@ export const useHeader = () => {
     const switcherVisibility = useAppSelector(
         (state) => state.ui.isVisibleLeftSideMenu
     );
-    const objectClickedBack = useAppSelector((state) => state.ui.objectSelected);
 
     const leftMenuVisibilitySmallDevices = useAppSelector((state) => state.ui.isVisibleLeftSideMenuAux)
 
@@ -38,10 +37,7 @@ export const useHeader = () => {
         dispatch(toggleLeft())
     }
 
-    const objectClickHandler = (objectSelectedFromSwitcher: ObjectSelected) => {
-        dispatch(objectClicked(objectSelectedFromSwitcher));
-        console.log(objectClickedBack);
-    };
+   
     const newTabInfoHandler = (infoToCreateNewTab: NewTabInfo) => {
         dispatch(newTabName(infoToCreateNewTab))
         console.log(infoToCreateNewTab + " OBJECT DISTPACHED")
@@ -54,10 +50,8 @@ export const useHeader = () => {
     return {
         objectName,
         switcherVisibility,
-        objectClickedBack,
         dispatch,
         toggleSwitcher,
-        objectClickHandler,
         switcherInitalState,
         newTabInfoHandler,
         newTabCreated,

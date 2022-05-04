@@ -1,21 +1,11 @@
-import {
-  AccordingItem,
-  Accordion,
-  AccordionItem,
-  Tab,
-  Tabs,
-} from "carbon-components-react";
-import { InfoSection, InfoCard } from "../../components/infoComponent";
-import Globe32 from "@carbon/icons-react/lib/globe/32";
-import PersonFavorite32 from "@carbon/icons-react/lib/person--favorite/32";
-import Application32 from "@carbon/icons-react/lib/application/32";
-import { FormComp } from "../../components/formComponent/FormComp";
+import { Tab, Tabs } from "carbon-components-react";
 import { useHeader } from "../../customHooks/useHeader";
 import { AFAbout } from "../tabs/AFAbout";
 import { AFServices } from "../tabs/AFServices";
 import { AFContact } from "../tabs/AFContact";
 import { AFFooter } from "../../components/footer/AFFooter";
-// import { Accordion, AccordionItem } from '@carbon/react';
+import { useContent } from "../../customHooks/useContent";
+import { useContentText } from "../../customHooks/useContentText";
 
 const props = {
   tabs: {
@@ -32,11 +22,28 @@ const props = {
 
 const LandingPage = () => {
   const { tabSelectedNumber } = useHeader();
+  const { isSwitchedToFrench } = useContent();
+  const {
+    ABOUT_ONE_EN,
+    ABOUT_ONE_FR,
+    ABOUT_TWO_EN,
+    ABOUT_TWO_FR,
+    CONTACT_ONE_EN,
+    CONTACT_ONE_FR,
+    CONTACT_TWO_EN,
+    CONTACT_TWO_FR,
+    SERVICE_ONE_EN,
+    SERVICE_ONE_FR,
+    SERVICE_TWO_EN,
+    SERVICE_TWO_FR,
+    SERVICE_THREE_EN,
+    SERVICE_THREE_FR,
+  } = useContentText();
 
   return (
     <>
       <div
-        style={{ background: "black" }}
+        style={{ background: "grey" }}
         className="bx--grid bx--grid--full-width landing-page"
       >
         <div
@@ -51,7 +58,11 @@ const LandingPage = () => {
                 AF-Consultants
               </h1>
             </strong>
-            <h3 style={{ color: "white" }}>Accounting Services</h3>
+            <h3 style={{ color: "white" }}>
+              {isSwitchedToFrench
+                ? "Services de comptabilité"
+                : "Accounting Services"}
+            </h3>
           </div>
         </div>
 
@@ -63,27 +74,53 @@ const LandingPage = () => {
               aria-label="Tab navigation"
               selected={Number(tabSelectedNumber)}
             >
-              <Tab {...props.tab} label="About">
-                <AFAbout props={{ ...props.tabs }} />
+              <Tab
+                {...props.tab}
+                label={isSwitchedToFrench ? "À propos" : "About"}
+              >
+                <AFAbout
+                  isFrenchProps={isSwitchedToFrench}
+                  ABOUT_ONE_EN={ABOUT_ONE_EN}
+                  ABOUT_ONE_FR={ABOUT_ONE_FR}
+                  ABOUT_TWO_EN={ABOUT_TWO_EN}
+                  ABOUT_TWO_FR={ABOUT_TWO_FR}
+                />
               </Tab>
 
               <Tab {...props.tab} label="Services">
-                <AFServices/>
+                <AFServices
+                  isFrenchProps={isSwitchedToFrench}
+                  SERVICES_ONE_EN={SERVICE_ONE_EN}
+                  SERVICES_ONE_FR={SERVICE_ONE_FR}
+                  SERVICES_TWO_EN={SERVICE_TWO_EN}
+                  SERVICES_TWO_FR={SERVICE_TWO_FR}
+                  SERVICES_THREE_EN={SERVICE_THREE_EN}
+                  SERVICES_THREE_FR={SERVICE_THREE_FR}
+                />
               </Tab>
-              <Tab {...props.tab} label="Contact">
-                <AFContact />
+              <Tab
+                {...props.tab}
+                label={isSwitchedToFrench ? "Nous joindre" : "Contact"}
+              >
+                <AFContact
+                  isFrenchProps={isSwitchedToFrench}
+                  CONTACT_ONE_EN={CONTACT_ONE_EN}
+                  CONTACT_ONE_FR={CONTACT_ONE_FR}
+                  CONTACT_TWO_EN={CONTACT_TWO_EN}
+                  CONTACT_TWO_FR={CONTACT_TWO_FR}
+                />
               </Tab>
             </Tabs>
           </div>
         </div>
-        
-        <AFFooter />
+
+        <AFFooter isFrenchToggled={isSwitchedToFrench} />
         <br />
       </div>
 
-      <div style={{ background: "black" }}>
+      <div style={{ background: "grey" }}>
         <p style={{ textAlign: "center", color: "white" }}>
-          &copy; 2022 <a href="http://www.ulogicapp.com">ulogicapp.com </a>
+          &copy; 2022 <a href="http://www.ulogicapp.com">ulogicapp </a>
         </p>
       </div>
     </>

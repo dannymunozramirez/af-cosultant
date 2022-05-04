@@ -1,43 +1,38 @@
-import { useState } from "react";
 import {
   Header,
   HeaderName,
-  HeaderNavigation,
   HeaderMenuItem,
   HeaderGlobalBar,
-  HeaderGlobalAction,
   SkipToContent,
   HeaderContainer,
-  HeaderMenu,
   HeaderMenuButton,
   SideNav,
   SideNavItems,
   SideNavMenuItem,
 } from "carbon-components-react/lib/components/UIShell";
-import Notification20 from "@carbon/icons-react/lib/notification/20";
-import AppSwitcher20 from "@carbon/icons-react/lib/app-switcher/20";
-import { Search20 } from "@carbon/icons-react";
+
 import { useHeader } from "../../customHooks/useHeader";
+import { useContent } from "../../customHooks/useContent";
 
 const HeaderComp = () => {
   const {
     smallDevTabSelectionHandler,
-    switcherVisibility,
     switcherInitalState,
     leftMenuVisibilitySmallDevices,
   } = useHeader();
-  const [isVisibleAux] = useState(true);
+  const { toggleFrenchHook, isSwitchedToFrench } = useContent();
 
   const tabSelectionHandler = (sectionNumber: string) => {
     smallDevTabSelectionHandler(sectionNumber);
     switcherInitalState();
-    console.log(isVisibleAux + " isVisibleAux!!!!!!!");
-    console.log(sectionNumber + " tabSelectedNumber!!!!!!!");
-    console.log(switcherVisibility + " switcherVisibility");
   };
 
   const visibilityHandler = () => {
     switcherInitalState();
+  };
+
+  const onChangeLanguage = () => {
+    toggleFrenchHook();
   };
 
   return (
@@ -60,20 +55,13 @@ const HeaderComp = () => {
               Consultants
             </HeaderName>
 
-            {/* <HeaderNavigation aria-label="Ulogic [Platform]">
-              <HeaderMenuItem href="#">Link 1</HeaderMenuItem>
-              <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
-              <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
-              <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-                <HeaderMenuItem href="#">Sub-link 1</HeaderMenuItem>
-                <HeaderMenuItem href="#">Sub-link 2</HeaderMenuItem>
-                <HeaderMenuItem href="#">Sub-link 3</HeaderMenuItem>
-              </HeaderMenu>
-            </HeaderNavigation> */}
+            <HeaderGlobalBar style={{ marginBottom: 5, marginRight: 20 }}>
+              <HeaderMenuItem href="tel:14505982338">
+                {isSwitchedToFrench ? "Téléphone" : "Phone"}: +1 450 598 23 38
+              </HeaderMenuItem>
 
-            <HeaderGlobalBar>
-              <HeaderMenuItem href="#">
-                <p style={{ marginBottom: 10 }}>Phone: +1 450 598 23 38</p>
+              <HeaderMenuItem onClick={onChangeLanguage} href="#">
+                {isSwitchedToFrench ? "EN" : "FR"}
               </HeaderMenuItem>
             </HeaderGlobalBar>
 
@@ -88,7 +76,7 @@ const HeaderComp = () => {
                     onClick={() => tabSelectionHandler("0")}
                     href="#"
                   >
-                    About
+                    {isSwitchedToFrench ? "À propos" : "About"}
                   </SideNavMenuItem>
                   <SideNavMenuItem
                     onClick={() => tabSelectionHandler("1")}
@@ -100,7 +88,10 @@ const HeaderComp = () => {
                     onClick={() => tabSelectionHandler("2")}
                     href="#"
                   >
-                    Contact
+                    {isSwitchedToFrench ? "Nous joindre" : "Contact"}
+                  </SideNavMenuItem>
+                  <SideNavMenuItem onClick={onChangeLanguage} href="#">
+                    {isSwitchedToFrench ? "ANG" : "FR"}
                   </SideNavMenuItem>
                 </SideNavItems>
               </SideNav>

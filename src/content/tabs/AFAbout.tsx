@@ -1,12 +1,13 @@
-import React from "react";
-import { Tab } from "carbon-components-react";
-import { PersonFavorite32, Application32, Globe32 } from "@carbon/icons-react";
 import { InfoSection, InfoCard } from "../../components/infoComponent";
+import { IAFAboutUsProp } from "./../../interfaces/ICompoents";
 
-interface Prop {
-  props: any;
-}
-export const AFAbout = ({ props }: Prop) => {
+export const AFAbout = ({
+  ABOUT_ONE_EN,
+  ABOUT_ONE_FR,
+  ABOUT_TWO_EN,
+  ABOUT_TWO_FR,
+  isFrenchProps,
+}: IAFAboutUsProp) => {
   return (
     <>
       <div className="bx--grid bx--grid--no-gutter bx--grid--full-width">
@@ -14,15 +15,7 @@ export const AFAbout = ({ props }: Prop) => {
           <div className="bx--col-md-4 bx--col-lg-7 marginTabSmallScreen">
             <h2 className="landing-page__subheading">AF-Consultants</h2>
             <p className="landing-page__p">
-              Whether you are an employee or a self-employed and you need an
-              accountant to take the worry out , your are in the right place.
-              AF-Consultants offers a wide range of services: Taxation for
-              individuals and corporations, Accounting and fiscal planning,
-              Financial statements and forecasts, Computerized bookkeeping and
-              Payroll Systems, Services for startups and Incorporations.
-              AF-Consultants also offers services such as: GST-QST statements,
-              payroll remittances and employer contributions, budgets, drafting
-              of contracts, internal and external control systems.
+              {isFrenchProps ? ABOUT_ONE_FR : ABOUT_ONE_EN}
             </p>
           </div>
           <div className="bx--col-md-4 bx--col-lg-7 marginTabSmallScreen">
@@ -48,21 +41,13 @@ export const AFAbout = ({ props }: Prop) => {
         >
           <h2 className="landing-page__subheading">AF-Consultants</h2>
           <p style={{ marginBottom: 150 }} className="landing-page__p">
-            Whether you are an employee or a self-employed and you need an
-            accountant to take the worry out , your are in the right place.
-            AF-Consultants offers a wide range of services: Taxation for
-            individuals and corporations, Accounting and fiscal planning,
-            Financial statements and forecasts, Computerized bookkeeping and
-            Payroll Systems, Services for startups and Incorporations.
-            AF-Consultants also offers services such as: GST-QST statements,
-            payroll remittances and employer contributions, budgets, drafting of
-            contracts, internal and external control systems.
+            {isFrenchProps ? ABOUT_TWO_FR : ABOUT_TWO_EN}
           </p>
           <div>
             <InfoSection heading="Who we are?" className="landing-page__r3">
               <InfoCard
                 heading="Margarita Flores"
-                body="Accounting"
+                body={isFrenchProps ? "Accounting" : "Comptabilité"}
                 icon={
                   <img
                     alt="neu"
@@ -77,7 +62,11 @@ export const AFAbout = ({ props }: Prop) => {
               />
               <InfoCard
                 heading="Name"
-                body="Carbon's modularity ensures maximum flexibility in execution. It's components are designed to work seamlessly with each other, in whichever combination suits the needs of the user."
+                body={
+                  isFrenchProps
+                    ? "French Carbon's modularity ensures maximum flexibility in execution. It's components are designed to work seamlessly "
+                    : "Carbon's modularity ensures maximum flexibility in execution. It's components are designed to work seamlessly with each other, in whichever combination suits the needs of the user."
+                }
                 icon={
                   <img
                     alt="neu"

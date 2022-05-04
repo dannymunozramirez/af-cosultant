@@ -1,8 +1,17 @@
 import { ListItem, UnorderedList } from "carbon-components-react";
 import React from "react";
 import { InfoSection, InfoCard } from "../../components/infoComponent";
+import { IAFServicesProp } from "../../interfaces/ICompoents";
 
-export const AFServices = () => {
+export const AFServices = ({
+  isFrenchProps,
+  SERVICES_ONE_EN,
+  SERVICES_ONE_FR,
+  SERVICES_TWO_EN,
+  SERVICES_TWO_FR,
+  SERVICES_THREE_EN,
+  SERVICES_THREE_FR,
+}: IAFServicesProp) => {
   return (
     <>
       <div className="bx--grid bx--grid--no-gutter bx--grid--full-width"></div>
@@ -18,17 +27,13 @@ export const AFServices = () => {
             AF-Consultants - Services
           </h2>
           <p style={{ marginBottom: 150 }} className="landing-page__p">
-            Tax software cannot guarantee this. In the event of a different or a
-            new notice of assessment during the year, you must contact us to
-            determine the cause. Sometimes a simple phone call to the ministry
-            fixes the situation. Otherwise a notice of objection must be filed
-            to settle the dispute within the prescribed time limits.
+            {isFrenchProps ? SERVICES_THREE_FR : SERVICES_THREE_EN}
           </p>
           <div>
             <InfoSection
               heading={
                 <>
-                  <h2>Our Services</h2>
+                  <h2>{isFrenchProps ? "Nos services" : "Our Services"}</h2>
                   <img
                     alt="neu"
                     style={{
@@ -43,8 +48,10 @@ export const AFServices = () => {
               className="landing-page__r3"
             >
               <InfoCard
-                heading="Accounting / Taxes"
-                body="Entrust it to our experts! When filing your returns, there is always a second check to ensure the reliability of your reports. In addition, AF-Consultants policy is to guarantee that your notices of contributions will be identical to your declarations."
+                heading={
+                  isFrenchProps ? "Comptabilité / Taxes" : "Accounting / Taxes"
+                }
+                body={isFrenchProps ? SERVICES_TWO_FR : SERVICES_TWO_EN}
                 icon={
                   <img
                     alt="neu"
@@ -59,10 +66,10 @@ export const AFServices = () => {
                 }
               />
               <InfoCard
-                heading="Management / Tool"
-                body="Accounting is the main tool for sound business management
-
-                It is mandatory for all commercial activity according to the tax laws in force in the country. Accounting is based on bookkeeping and supporting documents. All transactions must be recorded."
+                heading={
+                  isFrenchProps ? "Outil de gestion" : "Management / Tool"
+                }
+                body={isFrenchProps ? SERVICES_ONE_FR : SERVICES_ONE_EN}
                 icon={
                   <img
                     alt="neu"
@@ -77,13 +84,27 @@ export const AFServices = () => {
                 }
               />
               <InfoCard
-                heading="Accounting / Payroll production"
+                heading={
+                  isFrenchProps
+                    ? "Comptabilité / Production de la paie"
+                    : "Accounting / Payroll production"
+                }
                 body={
                   <UnorderedList>
-                    <ListItem>15-day or weekly pay statement</ListItem>
-                    <ListItem>Report of monthly withholding taxes</ListItem>
                     <ListItem>
-                      Delivery of T4 and Relevé 1 to employees
+                      {isFrenchProps
+                        ? "Bulletin de paie sur 15 jours ou hebdomadaire"
+                        : "15-day or weekly pay statement"}
+                    </ListItem>
+                    <ListItem>
+                      {isFrenchProps
+                        ? "Rapport des retenues à la source mensuelles"
+                        : "Report of monthly withholding taxes"}
+                    </ListItem>
+                    <ListItem>
+                      {isFrenchProps
+                        ? "Remise du T4 et du Relevé 1 aux employés"
+                        : "Delivery of T4 and Relevé 1 to employees"}
                     </ListItem>
                   </UnorderedList>
                 }
