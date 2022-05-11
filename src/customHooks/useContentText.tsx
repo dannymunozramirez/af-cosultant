@@ -40,15 +40,12 @@ export const useContentText = () => {
     ),
     ABOUT_TWO_FR: (
       <>
-        Whether you are an employee or a self-employed and you need an
-        accountant to take the worry out , your are in the right place.
-        AF-Consultants offers a wide range of services: Taxation for individuals
-        and corporations, Accounting and fiscal planning, Financial statements
-        and forecasts, Computerized bookkeeping and Payroll Systems, Services
-        for startups and Incorporations. AF-Consultants also offers services
-        such as: GST-QST statements, payroll remittances and employer
-        contributions, budgets, drafting of contracts, internal and external
-        control systems.
+        Le logiciel AF-Consultants - Services Tax ne peut garantir cela. Dans
+        l'éventualité d'un avis de cotisation différent ou d'un nouvel avis au
+        cours de la année, vous devez nous contacter pour en déterminer la
+        cause. Parfois un un simple coup de téléphone au ministère règle la
+        situation. Sinon un un avis d'opposition doit être déposé pour régler le
+        différend dans le les délais prescrits
       </>
     ),
     CONTACT_ONE_EN: (

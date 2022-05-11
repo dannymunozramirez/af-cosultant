@@ -82,7 +82,7 @@ export const FormComp = ({ isFrenchToggled }: Props) => {
         tabIndex={0}
         type="submit"
       >
-        {isFrenchToggled ? "Submit" : "Envoyer"}
+        {isFrenchToggled ? "Envoyer" : "Submit"}
       </Button>
       <br />
     </Form>

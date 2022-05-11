@@ -44,10 +44,10 @@ export const AFAbout = ({
             {isFrenchProps ? ABOUT_TWO_FR : ABOUT_TWO_EN}
           </p>
           <div>
-            <InfoSection heading="Who we are?" className="landing-page__r3">
+            <InfoSection heading={isFrenchProps? "Qui sommes-nous?":"Who we are?"} className="landing-page__r3">
               <InfoCard
                 heading="Margarita Flores"
-                body={isFrenchProps ? "Accounting" : "Comptabilité"}
+                body={isFrenchProps ? "Comptabilité" : "Accounting"}
                 icon={
                   <img
                     alt="neu"
